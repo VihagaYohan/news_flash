@@ -1,3 +1,5 @@
+import Article from "../model/Article";
+import ListResponse from "../model/ListResponse";
 import { newsAPIKey } from "./api";
 import { apiBaseUrl, breakingNewsUrl, recommendedNewsUrl } from "./endpoints";
 import axios from "axios";
@@ -17,15 +19,20 @@ const newsApiCall = async (endpoints: String, params: any = {}) => {
 
   try {
     const response = await axios.request(options);
-    return response.data;
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error("Failed to fetch data from server");
+    }
   } catch (error) {
     console.log(error);
     return {};
   }
 };
 
-export const fetchBreakingNews = async () => {
-  return await newsApiCall(breakingNewsUrl);
+export const fetchBreakingNews = async (): Promise<ListResponse<Article[]>> => {
+  let result = await newsApiCall(breakingNewsUrl);
+  return result;
 };
 
 export const fetchRecommendedNews = async () => {
