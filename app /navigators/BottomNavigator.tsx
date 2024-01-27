@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // screens
-import { HomeScreen, SearchScreen } from "../screens";
+import { HomeScreen, SearchScreen, SavedNewsScreen } from "../screens";
 
 // navigator
 import Routes from "../navigators/routes";
@@ -28,6 +28,17 @@ const Navigator = () => {
           title: "HOME",
           tabBarIcon: ({ color, size }) => {
             return <Ionicons name="home" color={color} size={size} />;
+          },
+        }}
+      />
+
+      <Tab.Screen
+        name={Routes.saved}
+        component={SavedNewsScreen}
+        options={{
+          title: "Saved",
+          tabBarIcon: ({ color, size }) => {
+            return <Ionicons name="bookmark" color={color} size={size} />;
           },
         }}
       />

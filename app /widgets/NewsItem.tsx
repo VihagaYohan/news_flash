@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { Component, useState } from "react";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // components
 import { UIImage, UITextView } from "../components";
 
 // constants
-import { DIMENSION, COLORS } from "../constants";
+import { DIMENSION, COLORS, STYLES } from "../constants";
 
 // utils
 import { normalizeSize, convertDate } from "../utils/helpers";
@@ -19,6 +19,7 @@ interface propTypes {
 }
 
 const NewsItem = ({ article }: propTypes) => {
+  const [selected, setSelected] = useState<boolean>();
   return (
     <View style={styles.itemContainer}>
       <UIImage
@@ -38,16 +39,35 @@ const NewsItem = ({ article }: propTypes) => {
           textStyle={styles.itemTitle}
         />
 
-        <UITextView
-          text={convertDate(article.publishedAt)}
-          textStyle={{
-            position: "absolute",
-            bottom: 10,
-            left: DIMENSION.PADDING,
-            fontSize: normalizeSize(20),
-            color: COLORS.grey,
-          }}
-        />
+        <View
+          style={[
+            {
+              flexDirection: "row",
+              alignItems: "center",
+              position: "absolute",
+              bottom: 10,
+              left: DIMENSION.PADDING,
+              width: "100%",
+              justifyContent: "space-between",
+            },
+          ]}
+        >
+          <UITextView
+            text={convertDate(article.publishedAt)}
+            textStyle={{ fontSize: 13, marginRight: 50 }}
+          />
+
+          <TouchableOpacity
+            style={{ padding: 5 }}
+            onPress={() => setSelected(!selected)}
+          >
+            <Ionicons
+              name={selected == true ? "bookmark" : "bookmark-outline"}
+              color={COLORS.primaryColor}
+              size={20}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -56,9 +76,12 @@ const NewsItem = ({ article }: propTypes) => {
 const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: "row",
+    backgroundColor: COLORS.white,
+    overflow: "hidden",
   },
   itemContentContainer: {
     paddingHorizontal: DIMENSION.PADDING / 2,
+    flex: 1,
   },
   itemAuthor: {
     fontWeight: "bold",
@@ -68,7 +91,10 @@ const styles = StyleSheet.create({
 
   itemTitle: {
     fontWeight: "normal",
-    fontSize: normalizeSize(30),
+  },
+
+  footer: {
+    justifyContent: "space-between",
   },
 });
 
