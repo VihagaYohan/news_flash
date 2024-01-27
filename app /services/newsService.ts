@@ -46,7 +46,9 @@ export const fetchDiscoverNews = async (discover: any) => {
   return await newsApiCall(discoverNewsUrl(discover));
 };
 
-export const fetchSearchNews = async (query: string) => {
+export const fetchSearchNews = async (
+  query: string
+): Promise<ListResponse<Article[]>> => {
   const endpoint = searchNewsUrl(query);
   return await newsApiCall(endpoint);
 };
