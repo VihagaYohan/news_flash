@@ -5,12 +5,14 @@ import { StyleSheet } from "react-native";
 import { UIContainer, UITextView } from "../components";
 
 // widgets
-import { BreakingNews } from "../widgets";
+import { BreakingNews, RecommendedNews } from "../widgets";
 
 const HomeScreen = () => {
   return (
     <UIContainer>
       <BreakingNews />
+
+      <RecommendedNews />
     </UIContainer>
   );
 };
