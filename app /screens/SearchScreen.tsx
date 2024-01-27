@@ -22,6 +22,9 @@ import Article from "../model/Article";
 // service
 import { fetchSearchNews } from "../services/newsService";
 
+// widgets
+import { NewsItem } from "../widgets";
+
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [data, setData] = useState<Article[]>([]);
@@ -42,49 +45,7 @@ const SearchScreen = () => {
 
   // render UI
   const RenderItem: ListRenderItem<Article> = ({ item, index }) => {
-    return (
-      <View style={styles.itemContainer}>
-        {/*  <Image
-          source={{ uri: item.urlToImage }}
-          style={{
-            width: 100,
-            height: 100,
-            borderRadius: DIMENSION.BORDER_RADIUS,
-            overflow: "hidden",
-          }}
-          resizeMode="cover"
-        /> */}
-
-        <UIImage
-          url={item.urlToImage}
-          imageStyles={{
-            borderRadius: DIMENSION.BORDER_RADIUS,
-            overflow: "hidden",
-          }}
-        />
-
-        <View style={styles.itemContentContainer}>
-          <UITextView text={item.author} textStyle={styles.itemAuthor} />
-
-          <UITextView
-            text={item.title}
-            numberOfLines={1}
-            textStyle={styles.itemTitle}
-          />
-
-          <UITextView
-            text={convertDate(item.publishedAt)}
-            textStyle={{
-              position: "absolute",
-              bottom: 10,
-              left: DIMENSION.PADDING,
-              fontSize: normalizeSize(20),
-              color: COLORS.grey,
-            }}
-          />
-        </View>
-      </View>
-    );
+    return <NewsItem article={item} />;
   };
 
   return (

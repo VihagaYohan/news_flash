@@ -22,6 +22,9 @@ import { fetchRecommendedNews } from "../services/newsService";
 // models
 import Article from "../model/Article";
 
+// widgets
+import NewsItem from "./NewsItem";
+
 const RecommendedNews = () => {
   const [data, setData] = useState<Article[]>();
 
@@ -43,50 +46,7 @@ const RecommendedNews = () => {
 
   // render UI
   const RenderItem: ListRenderItem<Article> = ({ item, index }) => {
-    console.log(index);
-    return (
-      <View style={styles.itemContainer}>
-        {/* <Image
-          source={{ uri: item.urlToImage }}
-          style={{
-            width: 100,
-            height: 100,
-            borderRadius: DIMENSION.BORDER_RADIUS,
-            overflow: "hidden",
-          }}
-          resizeMode="cover"
-        />
- */}
-        <UIImage
-          url={item.urlToImage}
-          imageStyles={{
-            borderRadius: DIMENSION.BORDER_RADIUS,
-            overflow: "hidden",
-          }}
-        />
-
-        <View style={styles.itemContentContainer}>
-          <UITextView text={item.author} textStyle={styles.itemAuthor} />
-
-          <UITextView
-            text={item.title}
-            numberOfLines={1}
-            textStyle={styles.itemTitle}
-          />
-
-          <UITextView
-            text={convertDate(item.publishedAt)}
-            textStyle={{
-              position: "absolute",
-              bottom: 10,
-              left: DIMENSION.PADDING,
-              fontSize: normalizeSize(20),
-              color: COLORS.grey,
-            }}
-          />
-        </View>
-      </View>
-    );
+    return <NewsItem article={item} />;
   };
   return (
     <UIContainer>

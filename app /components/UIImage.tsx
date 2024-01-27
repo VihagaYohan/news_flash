@@ -3,7 +3,7 @@ import { StyleSheet, View, ImageProps, ImageStyle } from "react-native";
 import { Image } from "expo-image";
 
 interface propTypes extends ImageProps {
-  url: string;
+  url: String;
   imageStyles?: ImageStyle | ImageStyle[];
 }
 
