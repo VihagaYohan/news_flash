@@ -10,3 +10,6 @@ export { default as UIIconButton } from "./Buttons/UIIconButton";
 
 // text input fields
 export { default as UITextInput } from "./UITextInput";
+
+// image
+export { default as UIImage } from "./UIImage";

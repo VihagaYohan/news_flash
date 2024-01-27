@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 // components
-import { UIContainer, UITextView, UITextInput } from "../components";
+import { UIContainer, UITextView, UITextInput, UIImage } from "../components";
 
 // constants
 import { DIMENSION, COLORS } from "../constants";
@@ -44,7 +44,7 @@ const SearchScreen = () => {
   const RenderItem: ListRenderItem<Article> = ({ item, index }) => {
     return (
       <View style={styles.itemContainer}>
-        <Image
+        {/*  <Image
           source={{ uri: item.urlToImage }}
           style={{
             width: 100,
@@ -53,6 +53,14 @@ const SearchScreen = () => {
             overflow: "hidden",
           }}
           resizeMode="cover"
+        /> */}
+
+        <UIImage
+          url={item.urlToImage}
+          imageStyles={{
+            borderRadius: DIMENSION.BORDER_RADIUS,
+            overflow: "hidden",
+          }}
         />
 
         <View style={styles.itemContentContainer}>

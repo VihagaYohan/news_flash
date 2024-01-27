@@ -8,13 +8,13 @@ import {
 } from "react-native";
 
 // components
-import { UIContainer, UITextView } from "../components";
+import { UIContainer, UITextView, UIImage } from "../components";
 
 // constants
 import { DIMENSION, COLORS } from "../constants";
 
 // utils
-import { normalizeSize } from "../utils/helpers";
+import { normalizeSize, convertDate } from "../utils/helpers";
 
 // services
 import { fetchRecommendedNews } from "../services/newsService";
@@ -46,7 +46,7 @@ const RecommendedNews = () => {
     console.log(index);
     return (
       <View style={styles.itemContainer}>
-        <Image
+        {/* <Image
           source={{ uri: item.urlToImage }}
           style={{
             width: 100,
@@ -55,6 +55,14 @@ const RecommendedNews = () => {
             overflow: "hidden",
           }}
           resizeMode="cover"
+        />
+ */}
+        <UIImage
+          url={item.urlToImage}
+          imageStyles={{
+            borderRadius: DIMENSION.BORDER_RADIUS,
+            overflow: "hidden",
+          }}
         />
 
         <View style={styles.itemContentContainer}>
@@ -67,7 +75,7 @@ const RecommendedNews = () => {
           />
 
           <UITextView
-            text={item.publishedAt}
+            text={convertDate(item.publishedAt)}
             textStyle={{
               position: "absolute",
               bottom: 10,
