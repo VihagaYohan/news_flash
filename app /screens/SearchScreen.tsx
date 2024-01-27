@@ -106,23 +106,6 @@ const SearchScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  itemContainer: {
-    flexDirection: "row",
-  },
-  itemContentContainer: {
-    paddingHorizontal: DIMENSION.PADDING / 2,
-  },
-  itemAuthor: {
-    fontWeight: "bold",
-    fontSize: normalizeSize(25),
-    fontStyle: "italic",
-  },
-
-  itemTitle: {
-    fontWeight: "normal",
-    fontSize: normalizeSize(30),
-  },
-});
+const styles = StyleSheet.create({});
 
 export default SearchScreen;

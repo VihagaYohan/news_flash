@@ -94,22 +94,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: COLORS.primaryColor,
   },
-  itemContainer: {
-    flexDirection: "row",
-  },
-  itemContentContainer: {
-    paddingHorizontal: DIMENSION.PADDING / 2,
-  },
-  itemAuthor: {
-    fontWeight: "bold",
-    fontSize: normalizeSize(25),
-    fontStyle: "italic",
-  },
-
-  itemTitle: {
-    fontWeight: "normal",
-    fontSize: normalizeSize(30),
-  },
 });
 
 export default RecommendedNews;
