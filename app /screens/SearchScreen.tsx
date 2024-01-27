@@ -14,7 +14,7 @@ import { UIContainer, UITextView, UITextInput } from "../components";
 import { DIMENSION, COLORS } from "../constants";
 
 // utils
-import { normalizeSize } from "../utils/helpers";
+import { normalizeSize, convertDate } from "../utils/helpers";
 
 // models
 import Article from "../model/Article";
@@ -65,7 +65,7 @@ const SearchScreen = () => {
           />
 
           <UITextView
-            text={item.publishedAt}
+            text={convertDate(item.publishedAt)}
             textStyle={{
               position: "absolute",
               bottom: 10,

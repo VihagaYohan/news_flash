@@ -38,6 +38,7 @@ const BreakingNews = () => {
         keyExtractor={(item, index) => `${index}-breakingNews`}
         horizontal={true}
         pagingEnabled
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => {
           return (
             <View style={styles.cardStyle}>
