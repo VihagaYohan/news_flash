@@ -1,15 +1,15 @@
-import React, {Component, useState, useEffect} from 'react';
-import {StyleSheet, Modal, View, ModalProps} from 'react-native';
+import React, { Component, useState, useEffect } from "react";
+import { StyleSheet, Modal, View, ModalProps } from "react-native";
 
 // redux
-import {useAppDispatch, useAppSelector} from '../store/store';
-import {setPass, setFail} from '../store/slice/contactSlice';
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { setPass, setFail } from "../store/slice/contactSlice";
 
 // components
-import {UIButton, UITextView} from '.';
+import { UIButton, UITextView } from ".";
 
 // constants
-import {COLORS, DIMENSION} from '../constants';
+import { COLORS, DIMENSION } from "../constants";
 
 interface propTypes {
   message: String;
@@ -20,7 +20,7 @@ interface propTypes {
 const UIAlert = (props: propTypes) => {
   const [visible, setVisible] = useState<boolean>(true);
   const dispatch = useAppDispatch();
-  const {message} = useAppSelector(state => state.contact);
+  const { message } = useAppSelector((state) => state.contact);
 
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
@@ -51,9 +51,9 @@ const UIAlert = (props: propTypes) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.7)",
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
   },
   messageContainer: {
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: DIMENSION.MARGIN * 2,
     paddingVertical: DIMENSION.MARGIN,
     borderRadius: DIMENSION.CARD_BORDER_RADIUS,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
