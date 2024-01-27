@@ -4,10 +4,13 @@ import { StyleSheet } from "react-native";
 // components
 import { UIContainer, UITextView } from "../components";
 
+// widgets
+import { BreakingNews } from "../widgets";
+
 const HomeScreen = () => {
   return (
     <UIContainer>
-      <UITextView text="home screen" />
+      <BreakingNews />
     </UIContainer>
   );
 };
