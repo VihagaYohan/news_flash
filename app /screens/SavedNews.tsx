@@ -15,7 +15,12 @@ import Article from "../model/Article";
 
 // widgets
 import { NewsItem } from "../widgets";
+
+// navigation
 import { Routes } from "../navigators";
+
+// redux
+import { useAppDispatch, useAppSelector } from "../store/store";
 
 const SavedNews = ({
   navigation,
@@ -25,25 +30,20 @@ const SavedNews = ({
   route: RouteProp<any, any>;
 }) => {
   const [data, setData] = useState<Article[]>();
+  const { savedNews } = useAppSelector((state) => state.savedNews);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchSavedNews();
+    // fetchSavedNews();
+
+    setData(savedNews);
   }, []);
 
-  const fetchSavedNews = async () => {
-    try {
-      let result = await getData(KEYS.savedNews);
-      if (result !== null) {
-        console.log(result.length);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  useEffect(() => {}, [data]);
 
   return (
     <UIContainer>
-      {data?.length === 0 ? (
+      {data?.length !== 0 ? (
         <FlatList
           data={data}
           keyExtractor={(item, index) => `${index}-saved-news`}

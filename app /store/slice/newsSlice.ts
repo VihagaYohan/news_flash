@@ -39,13 +39,18 @@ export const newsSlice = createSlice({
       state.message = action.payload;
     },
     addNews: (state, action: PayloadAction<Article>) => {
-      state.savedNews = [...state.savedNews, action.payload];
-    },
-    removeNews: (state, action: PayloadAction<Article>) => {
+      /* console.log(action.payload);
       let list = state.savedNews.filter(
         (item, index) => JSON.stringify(item) !== JSON.stringify(action.payload)
       );
-      state.savedNews = list;
+      if (list.length === 0) {
+        console.log(1, list.length);
+        return;
+      } else {
+        state.savedNews = [...state.savedNews, action.payload];
+        console.log(2, state.savedNews);
+      } */
+      state.savedNews = [...state.savedNews, action.payload];
     },
   },
 });
@@ -57,7 +62,6 @@ export const {
   setFail,
   setMessage,
   addNews,
-  removeNews,
 } = newsSlice.actions;
 
 export default newsSlice.reducer;

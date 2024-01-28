@@ -14,6 +14,10 @@ import { normalizeSize, convertDate, setData } from "../utils/helpers";
 // model
 import Article from "../model/Article";
 
+// redux
+import { useAppSelector, useAppDispatch } from "../store/store";
+import { addNews } from "../store/slice/newsSlice";
+
 interface propTypes {
   article: Article;
   onClick: () => void;
@@ -21,6 +25,8 @@ interface propTypes {
 
 const NewsItem = ({ article, onClick }: propTypes) => {
   const [selected, setSelected] = useState<boolean>();
+  const dispatch = useAppDispatch();
+
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={() => onClick()}>
       <UIImage
@@ -62,7 +68,7 @@ const NewsItem = ({ article, onClick }: propTypes) => {
             style={{ padding: 5 }}
             onPress={() => {
               setSelected(!selected);
-              setData(KEYS.savedNews, article);
+              dispatch(addNews(article));
             }}
           >
             <Ionicons
