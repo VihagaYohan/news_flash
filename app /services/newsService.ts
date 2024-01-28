@@ -42,7 +42,9 @@ export const fetchRecommendedNews = async (): Promise<
   return result;
 };
 
-export const fetchDiscoverNews = async (discover: any) => {
+export const fetchDiscoverNews = async (
+  discover: any
+): Promise<ListResponse<Article[]>> => {
   return await newsApiCall(discoverNewsUrl(discover));
 };
 
