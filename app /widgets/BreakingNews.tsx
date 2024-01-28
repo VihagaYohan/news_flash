@@ -6,8 +6,14 @@ import { fetchBreakingNews } from "../services/newsService";
 
 // model
 import Article from "../model/Article";
-import { UITextView } from "../components";
+
+// components
+import { UITextView, UIImage } from "../components";
+
+// constants
 import { COLORS, DIMENSION } from "../constants";
+
+// utils
 import { normalizeSize } from "../utils/helpers";
 
 const BreakingNews = () => {

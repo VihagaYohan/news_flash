@@ -16,12 +16,13 @@ import Article from "../model/Article";
 
 interface propTypes {
   article: Article;
+  onClick?: () => void;
 }
 
-const NewsItem = ({ article }: propTypes) => {
+const NewsItem = ({ article, onClick }: propTypes) => {
   const [selected, setSelected] = useState<boolean>();
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={() => onClick()}>
       <UIImage
         url={article.urlToImage}
         imageStyles={{
@@ -72,7 +73,7 @@ const NewsItem = ({ article }: propTypes) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

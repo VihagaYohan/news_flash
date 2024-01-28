@@ -6,6 +6,7 @@ import {
   ListRenderItem,
   Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // components
 import { UIContainer, UITextView, UIImage } from "../components";
@@ -25,8 +26,12 @@ import Article from "../model/Article";
 // widgets
 import NewsItem from "./NewsItem";
 
+// navigation
+import { Routes } from "../navigators";
+
 const RecommendedNews = () => {
   const [data, setData] = useState<Article[]>();
+  const navigation = useNavigation();
 
   useEffect(() => {
     getRecommendedNews();
@@ -46,7 +51,12 @@ const RecommendedNews = () => {
 
   // render UI
   const RenderItem: ListRenderItem<Article> = ({ item, index }) => {
-    return <NewsItem article={item} />;
+    return (
+      <NewsItem
+        article={item}
+        onClick={() => navigation.navigate(Routes.details)}
+      />
+    );
   };
 
   return (
