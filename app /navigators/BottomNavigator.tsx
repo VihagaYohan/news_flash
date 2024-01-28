@@ -4,7 +4,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // screens
-import { HomeScreen, SearchScreen, SavedNewsScreen } from "../screens";
+import {
+  HomeScreen,
+  SearchScreen,
+  SavedNewsScreen,
+  CategoriesScreen,
+} from "../screens";
 
 // navigator
 import Routes from "../navigators/routes";
@@ -33,10 +38,21 @@ const Navigator = () => {
       />
 
       <Tab.Screen
+        name={Routes.categories}
+        component={CategoriesScreen}
+        options={{
+          title: "CATEGORIES",
+          tabBarIcon: ({ color, size }) => {
+            return <Ionicons name="compass" color={color} size={size} />;
+          },
+        }}
+      />
+
+      <Tab.Screen
         name={Routes.saved}
         component={SavedNewsScreen}
         options={{
-          title: "Saved",
+          title: "SAVED",
           tabBarIcon: ({ color, size }) => {
             return <Ionicons name="bookmark" color={color} size={size} />;
           },

@@ -8,7 +8,7 @@ import { fetchBreakingNews } from "../services/newsService";
 import Article from "../model/Article";
 
 // components
-import { UITextView, UIImage } from "../components";
+import { UITextView, UIImage, UILoader } from "../components";
 
 // constants
 import { COLORS, DIMENSION } from "../constants";
@@ -52,6 +52,9 @@ const BreakingNews = () => {
                 source={{ uri: item.urlToImage }}
                 style={styles.cardImageStyle}
                 resizeMode="cover"
+                onLoad={() => {
+                  return <UILoader />;
+                }}
               >
                 <UITextView text={item.title} textStyle={styles.cardTitle} />
               </ImageBackground>
