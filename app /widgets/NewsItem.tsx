@@ -6,10 +6,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { UIImage, UITextView } from "../components";
 
 // constants
-import { DIMENSION, COLORS, STYLES } from "../constants";
+import { DIMENSION, COLORS, STYLES, KEYS } from "../constants";
 
 // utils
-import { normalizeSize, convertDate } from "../utils/helpers";
+import { normalizeSize, convertDate, setData } from "../utils/helpers";
 
 // model
 import Article from "../model/Article";
@@ -59,7 +59,10 @@ const NewsItem = ({ article }: propTypes) => {
 
           <TouchableOpacity
             style={{ padding: 5 }}
-            onPress={() => setSelected(!selected)}
+            onPress={() => {
+              setSelected(!selected);
+              setData(KEYS.savedNews, article);
+            }}
           >
             <Ionicons
               name={selected == true ? "bookmark" : "bookmark-outline"}

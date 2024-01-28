@@ -48,6 +48,7 @@ const RecommendedNews = () => {
   const RenderItem: ListRenderItem<Article> = ({ item, index }) => {
     return <NewsItem article={item} />;
   };
+
   return (
     <UIContainer>
       <UITextView text="RECOMMENDED NEWS" textStyle={styles.titleStyle} />
@@ -57,7 +58,6 @@ const RecommendedNews = () => {
         keyExtractor={(item, index) => `${index} - recommended news`}
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => {
-          console.log(item);
           return (
             <RenderItem
               item={item}

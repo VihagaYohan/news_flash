@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Dimensions, Platform, PixelRatio, Alert } from "react-native";
 import moment from "moment";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Article from "../model/Article";
 
 // print console logs, only in dev environment
 export const showConsole = (content: any) => {
@@ -32,9 +33,9 @@ export const convertDate = (payload: String) => {
 };
 
 // set data in async storage
-export const setData = async (key: string, payload: string) => {
+export const setData = async (key: string, payload: Article) => {
   try {
-    await AsyncStorage.setItem(key, JSON.stringify(payload));
+    return await AsyncStorage.setItem(key, JSON.stringify(payload));
   } catch (e) {
     console.log(`Error: ${e}`);
   }
@@ -43,7 +44,7 @@ export const setData = async (key: string, payload: string) => {
 // get data from async storage
 export const getData = async (key: string) => {
   try {
-    return await AsyncStorage.getItem(key);
+    await AsyncStorage.getItem(key);
   } catch (e) {
     console.log(`Error: `);
   }

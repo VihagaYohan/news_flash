@@ -100,7 +100,11 @@ const SearchScreen = () => {
           }}
         />
       ) : (
-        <View />
+        <View
+          style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
+        >
+          <UITextView text="There are no items to show" />
+        </View>
       )}
     </UIContainer>
   );
