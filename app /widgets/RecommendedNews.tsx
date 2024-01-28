@@ -54,7 +54,7 @@ const RecommendedNews = () => {
     return (
       <NewsItem
         article={item}
-        onClick={() => navigation.navigate(Routes.details)}
+        onClick={() => navigation.navigate(Routes.details, { item })}
       />
     );
   };

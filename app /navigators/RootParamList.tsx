@@ -5,7 +5,9 @@ type RootParamList = {
   search_screen: undefined;
   bottom_navigator: undefined;
   saved_news_screen: undefined;
-  details_news_screen: Article;
+  details_news_screen: {
+    item: Article;
+  };
 };
 
 export default RootParamList;

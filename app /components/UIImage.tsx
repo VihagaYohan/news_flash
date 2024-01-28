@@ -11,7 +11,7 @@ const UIImage = ({ url, imageStyles, ...props }: propTypes) => {
   return (
     <Image
       source={{ uri: url }}
-      style={[styles.image]}
+      style={[styles.image, imageStyles]}
       cachePolicy="memory"
       contentFit="contain"
       defaultSource={require("../../assets/default-image.png")}

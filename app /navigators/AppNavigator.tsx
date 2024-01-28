@@ -6,14 +6,25 @@ import { DetailsNewsScreen } from "../screens/";
 
 // navigator
 import { BottomNavigator, Routes, RouteParamList } from "./";
+import { UITextView } from "../components";
 
 const Stack = createNativeStackNavigator<RouteParamList>();
 
 const Navigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={Routes.bottom} component={BottomNavigator} />
-      <Stack.Screen name={Routes.details} component={DetailsNewsScreen} />
+    <Stack.Navigator
+      screenOptions={{ headerShown: true, headerTitleAlign: "center" }}
+    >
+      <Stack.Screen
+        name={Routes.bottom}
+        component={BottomNavigator}
+        options={{ title: "NEWS APP" }}
+      />
+      <Stack.Screen
+        name={Routes.details}
+        component={DetailsNewsScreen}
+        options={{ title: "DETAILS" }}
+      />
     </Stack.Navigator>
   );
 };
