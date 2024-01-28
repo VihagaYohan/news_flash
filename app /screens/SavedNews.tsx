@@ -1,5 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RouteProp } from "@react-navigation/native";
 
 // components
 import { UIContainer, UITextView } from "../components";
@@ -13,9 +15,16 @@ import Article from "../model/Article";
 
 // widgets
 import { NewsItem } from "../widgets";
+import { Routes } from "../navigators";
 
-const SavedNews = () => {
-  const [data, setData] = useState<Article>();
+const SavedNews = ({
+  navigation,
+  route,
+}: {
+  navigation: NativeStackNavigationProp<any, any>;
+  route: RouteProp<any, any>;
+}) => {
+  const [data, setData] = useState<Article[]>();
 
   useEffect(() => {
     fetchSavedNews();
@@ -24,7 +33,9 @@ const SavedNews = () => {
   const fetchSavedNews = async () => {
     try {
       let result = await getData(KEYS.savedNews);
-      setData(JSON.parse(result));
+      if (result !== null) {
+        console.log(result.length);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -32,7 +43,24 @@ const SavedNews = () => {
 
   return (
     <UIContainer>
-      {data !== undefined ? <NewsItem article={data} /> : <View />}
+      {data?.length === 0 ? (
+        <FlatList
+          data={data}
+          keyExtractor={(item, index) => `${index}-saved-news`}
+          renderItem={({ item, index }) => (
+            <NewsItem
+              article={item}
+              onClick={() => navigation.navigate(Routes.details, { item })}
+            />
+          )}
+        />
+      ) : (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <UITextView text="There are no saved news to show" />
+        </View>
+      )}
     </UIContainer>
   );
 };

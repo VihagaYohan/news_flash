@@ -3,7 +3,7 @@ import { StyleSheet, Modal, View, ModalProps } from "react-native";
 
 // redux
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { setPass, setFail } from "../store/slice/contactSlice";
+import { setPass, setFail } from "../store/slice/newsSlice";
 
 // components
 import { UIButton, UITextView } from ".";

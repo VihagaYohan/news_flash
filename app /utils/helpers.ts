@@ -35,7 +35,26 @@ export const convertDate = (payload: String) => {
 // set data in async storage
 export const setData = async (key: string, payload: Article) => {
   try {
-    return await AsyncStorage.setItem(key, JSON.stringify(payload));
+    let savedList: Article[] = [];
+    let response = await AsyncStorage.getItem(key);
+    if (response !== null) {
+      savedList = [...JSON.parse(response)];
+    }
+
+    if (savedList.length === 0) {
+      console.log("empty");
+      savedList.push(payload);
+    } else {
+      console.log("not empty");
+      savedList.map((item, index) => {
+        if (JSON.stringify(item) === JSON.stringify(payload)) {
+          return;
+        } else {
+          savedList.push(payload);
+        }
+      });
+    }
+    return await AsyncStorage.setItem(key, JSON.stringify(savedList));
   } catch (e) {
     console.log(`Error: ${e}`);
   }
@@ -44,7 +63,12 @@ export const setData = async (key: string, payload: Article) => {
 // get data from async storage
 export const getData = async (key: string) => {
   try {
-    await AsyncStorage.getItem(key);
+    let response = await AsyncStorage.getItem(key);
+    let res;
+    if (response !== null) {
+      res = JSON.parse(response);
+    }
+    return res;
   } catch (e) {
     console.log(`Error: `);
   }

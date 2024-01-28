@@ -16,7 +16,7 @@ import Article from "../model/Article";
 
 interface propTypes {
   article: Article;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const NewsItem = ({ article, onClick }: propTypes) => {

@@ -55,6 +55,7 @@ const BreakingNews = () => {
                 onLoad={() => {
                   return <UILoader />;
                 }}
+                defaultSource={require("../../assets/default-image.png")}
               >
                 <UITextView text={item.title} textStyle={styles.cardTitle} />
               </ImageBackground>
